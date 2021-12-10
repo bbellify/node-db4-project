@@ -1,6 +1,6 @@
 const db = require('../data/db-config')
 
-async function getRecipeById(id) {
+async function getRecipeById(recipe_id) {
 
 //     select
 //     r.*,
@@ -21,7 +21,7 @@ async function getRecipeById(id) {
         .join('steps as s', 's.recipe_id', 'r.recipe_id')
         .leftJoin('steps_ingredients as si', 's.step_id', 'si.step_id')
         .leftJoin('ingredients as i', 'si.ingredient_id', 'i.ingredient_id')
-        .where('r.recipe_id', id)
+        .where('r.recipe_id', recipe_id)
         .orderBy('s.step_number')
 
     let steps = []
