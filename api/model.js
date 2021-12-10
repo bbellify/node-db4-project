@@ -19,7 +19,7 @@ async function getRecipeById(recipe_id) {
 
     const rows = await db('recipes as r')
         .join('steps as s', 's.recipe_id', 'r.recipe_id')
-        .leftJoin('steps_ingredients as si', 's.step_id', 'si.step_id')
+        .leftJoin('step_ingredients as si', 's.step_id', 'si.step_id')
         .leftJoin('ingredients as i', 'si.ingredient_id', 'i.ingredient_id')
         .where('r.recipe_id', recipe_id)
         .orderBy('s.step_number')
