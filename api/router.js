@@ -11,6 +11,7 @@ router.get('/:recipe_id', (req, res, next) => {
         .then( rec => {
             res.json(rec)
         })
+        .catch(next)
 
 })
 
